@@ -1,6 +1,8 @@
 let HomePage = function() {
     let firstNumber_input = element(by.model('first'));
     let secondNumber_input = element(by.model('second'));
+    let operator = element(by.model('operator'));
+    let selectOperation = element(by.xpath(".//option[@value= 'DIVISION']"));
     let goButton = element(by.css('[ng-click="doAddition()"]'));
 
     this.getUrlProyect = function(url) {
@@ -15,6 +17,14 @@ let HomePage = function() {
         secondNumber_input.sendKeys(secondNumber_Value);
     };
 
+    this.clickOperator = function() {
+        operator.click();
+    };
+
+    this.selectOperator = function() {
+        selectOperation.click();
+    };
+
     this.clickGoButton = function() {
         goButton.click();
     };
@@ -23,5 +33,7 @@ let HomePage = function() {
         let output = element(by.cssContainingText('.ng-binding', result));
         expect(output.getText()).toEqual(result);
     };
+
+
 };
 module.exports = new HomePage();
